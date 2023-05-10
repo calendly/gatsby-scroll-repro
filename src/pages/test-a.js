@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 
 const sections = Array(30).fill(null);
 
-const IndexPage = () => {
+const TestA = () => {
   return (
     <main>
       {sections.map((_content, index) => (
@@ -17,13 +17,13 @@ const IndexPage = () => {
           }}
         >
           section {index}
-          <Link to="/test-a">To Test A</Link>
+          <Link to="/">To Homepage</Link>
         </section>
       ))}
     </main>
   );
 };
 
-export default IndexPage;
+export default TestA;
 
 export const Head = () => <title>Test A</title>;
