@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
 
-const sections = Array(30).fill(null);
+const sections = Array(10).fill(null);
 
 const TestA = () => {
   return (
@@ -11,7 +11,7 @@ const TestA = () => {
           style={{
             display: 'flex',
             flexDirection: 'column',
-            backgroundColor: '#FFF4DB',
+            backgroundColor: 'aliceblue',
             height: 200,
             borderTop: 'solid 1px black',
           }}

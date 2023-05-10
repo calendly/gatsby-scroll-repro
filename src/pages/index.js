@@ -11,7 +11,6 @@ const IndexPage = () => {
           style={{
             display: 'flex',
             flexDirection: 'column',
-            backgroundColor: '#FFF4DB',
             height: 200,
             borderTop: 'solid 1px black',
           }}
