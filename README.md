@@ -1,49 +1,31 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby Minimal Starter
-</h1>
+# Gatsby scroll bug reproduction
 
-## 🚀 Quick start
+## Purpose
 
-1.  **Create a Gatsby site.**
+This repo demonstrates a bug with Gatsby's scroll restoration feature.
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+## Symptom
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
+The bug can be seen when the page scroll position does not direct the user to the top when navigating between pages within a Gatsby site. This often means the user is left at the bottom of a page or somewhere in the middle despite never having navigated to the page before.
 
-2.  **Start developing.**
+A version of the bug can be seen on Calendly's website in [this Loom video](https://www.loom.com/share/d9d80130268d453e880fddffe053f366).
 
-    Navigate into your new site’s directory and start it up.
+## Steps to reproduce
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+This repo is already set up to demonstrate the error.
 
-3.  **Open the code and start customizing!**
+1. Start the dev server
 
-    Your site is now running at http://localhost:8001!
+```shell
+yarn run start
+```
 
-    Edit `src/pages/index.js` to see your site update in real-time!
+2. Open the homepage at `http://localhost:8001/`
 
-4.  **Learn more**
+3. Scroll to the bottom of the page and click the "To Test A" link. Clicking the bottom link to the homepage should also trigger the bug.
 
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Tutorials](https://www.gatsbyjs.com/docs/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Guides](https://www.gatsbyjs.com/docs/how-to/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+## Possible explanation
 
-## 🚀 Quick start (Netlify)
+The bug seems to occur when DOM elements are added/loaded on the page during rehydration. With `scroll-behavior: smooth;` the browser begins to move the window to the top of the page, but is interrupted by DOM elements changing the page position, causing it to stop the animation. Notably, the issue does not occur when `scroll-behavior` is `auto`.
 
-Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
-
-[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-minimal)
+In this case I have recreated the issue using Marketo forms to load DOM elements, since I noticed pages with Marketo forms seem to most reliably have the issue.
