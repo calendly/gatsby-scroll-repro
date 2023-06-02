@@ -29,3 +29,8 @@ yarn run start
 The bug seems to occur when DOM elements are added/loaded on the page during rehydration. With `scroll-behavior: smooth;` the browser begins to move the window to the top of the page, but is interrupted by DOM elements changing the page position, causing it to stop the animation. Notably, the issue does not occur when `scroll-behavior` is `auto`.
 
 In this case I have recreated the issue using Marketo forms to load DOM elements, since I noticed pages with Marketo forms seem to most reliably have the issue.
+
+## Secrets
+
+In order to demo the issue you will need access this env variable:
+`GATSBY_MARKETO_ID`
