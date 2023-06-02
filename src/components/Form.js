@@ -12,12 +12,6 @@ const Form = ({ formId = 1020 }) => {
     script.async = true;
     script.onload = () => setScriptLoaded(true);
     document.head.appendChild(script);
-    // const params = new URLSearchParams(window.location.search);
-    // params.forEach((key, value) => {
-    //   if (urlFieldParams.includes(value)) {
-    //     localStorage.setItem(value, key);
-    //   }
-    // });
   }, []);
 
   useEffect(() => {

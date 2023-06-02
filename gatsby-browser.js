@@ -1,3 +1,5 @@
+import "./src/styles/global.css";
+
 export const shouldUpdateScroll = ({
   routerProps: { location },
   getSavedScrollPosition,
