@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
+import Form from '../components/Form';
 
-const sections = Array(10).fill(null);
+const sections = Array(30).fill(null);
 
 const TestA = () => {
   return (
     <main>
+      <Form id={1020} />
       {sections.map((_content, index) => (
         <section
           style={{
