@@ -8,6 +8,7 @@ const IndexPage = () => {
     <main>
       {sections.map((_content, index) => (
         <section
+          key={index}
           style={{
             display: 'flex',
             flexDirection: 'column',

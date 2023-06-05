@@ -10,6 +10,7 @@ const TestA = () => {
       <Form id={1020} />
       {sections.map((_content, index) => (
         <section
+          key={index}
           style={{
             display: 'flex',
             flexDirection: 'column',
